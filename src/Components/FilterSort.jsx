@@ -6,6 +6,8 @@ const FilterSort = ({ products, setFilteredProducts }) => {
   const [priceRange, setPriceRange] = useState("");
   const [sortOption, setSortOption] = useState("");
   const [categories, setCategories] = useState([]);
+
+
   useEffect(() => {
     // Generate random categories using faker
     const generatedCategories = new Set(); // Use Set to avoid duplicates
@@ -15,6 +17,8 @@ const FilterSort = ({ products, setFilteredProducts }) => {
     }
     setCategories([...generatedCategories]); // Convert Set back to array
   }, []);
+
+  
   // Combine filter and sort handling in a single effect
   useEffect(() => {
     // Filter products based on category and price
@@ -27,7 +31,6 @@ const FilterSort = ({ products, setFilteredProducts }) => {
         : true;
       return matchesCategory && matchesPriceRange;
     });
-
 
     // Sort the filtered products based on the selected option
     const sorted = filtered.sort((a, b) => {
@@ -62,27 +65,27 @@ const FilterSort = ({ products, setFilteredProducts }) => {
   };
 
   return (
-    <div  className="filter-sort flex flex-wrap justify-between gap-4 p-4">
+    <div className="filter-sort flex flex-wrap justify-between gap-4 p-4">
       <label className="flex flex-col sm:flex-row sm:items-center">
         Category:
         <select
-        className="border ml-2"
+          className="border ml-2"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
           <option value="">All</option>
           {categories.map((category, index) => (
-        <option key={index} value={category}>
-          {category}
-        </option>
-      ))}
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </label>
 
       <label className="flex flex-col sm:flex-row sm:items-center">
         Price Range:
         <select
-        className="border ml-2"
+          className="border ml-2"
           value={priceRange}
           onChange={(e) => setPriceRange(e.target.value)}
         >
@@ -96,7 +99,7 @@ const FilterSort = ({ products, setFilteredProducts }) => {
       <label className="flex flex-col sm:flex-row sm:items-center">
         Sort By:
         <select
-        className="border ml-2"
+          className="border ml-2"
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
         >
