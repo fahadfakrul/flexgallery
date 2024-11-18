@@ -49,7 +49,7 @@ function App() {
   
   return (
     <>
-      <div className="container mx-auto border">
+      <div className="container mx-auto">
         <NavBar onSearch={handleSearch} />
         <hr className=" my-5" />
         <FilterSort
